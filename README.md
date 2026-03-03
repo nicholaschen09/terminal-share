@@ -1,5 +1,9 @@
 # terminal-share
 
+
+https://github.com/user-attachments/assets/3e0c996c-7968-407f-bd25-4d8fa369b94d
+
+
 Live-share your terminal session over WebSockets. One binary, three commands.
 
 ## Install
