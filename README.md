@@ -45,7 +45,7 @@ Share with: tshare join -s localhost:8080 a3f1c2
 tshare join a3f1c2
 ```
 
-The viewer sees the host's terminal in real time. Both sides can type.
+The viewer sees the host's terminal in real time. 
 
 ## Architecture
 
