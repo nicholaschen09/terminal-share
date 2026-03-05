@@ -7,15 +7,23 @@ Live-share your terminal session over WebSockets. One binary, three commands.
 ## Install
 
 ```bash
-go install github.com/nicholaschen09/tunl@latest
+go install github.com/nicholaschen09/tunl@latest 
 ```
+
+or 
+
+```bash
+GOPROXY=direct go install github.com/nicholaschen09/tunl@latest
+```
+
+This installs a binary named `tunl` into your `$GOBIN` (or `$GOPATH/bin`).
 
 Or build from source:
 
 ```bash
 git clone https://github.com/nicholaschen09/tunl.git
 cd tunl
-go build -o tshare .
+go build -o tunl .
 ```
 
 ## Quick Start
@@ -23,13 +31,13 @@ go build -o tshare .
 **1. Start the relay server**
 
 ```bash
-tshare server
+tunl server
 ```
 
 **2. Host a session** (in another terminal)
 
 ```bash
-tshare host
+tunl host
 ```
 
 This spawns your shell in a shared PTY and prints a session ID:
@@ -42,7 +50,7 @@ Share with: tshare join -s localhost:8080 a3f1c2
 **3. Join a session**
 
 ```bash
-tshare join a3f1c2
+tunl join a3f1c2
 ```
 
 The viewer sees the host's terminal in real time. 
@@ -53,7 +61,7 @@ Use [ngrok](https://ngrok.com) to expose your relay server publicly:
 
 ```bash
 # terminal 1 — start the relay
-tshare server
+tunl server
 
 # terminal 2 — tunnel it through ngrok
 ngrok http 8080
@@ -63,10 +71,10 @@ ngrok will print a URL like `https://abc123.ngrok-free.app`. Use it with port 44
 
 ```bash
 # terminal 3 — host a session
-tshare host -s abc123.ngrok-free.app:443
+tunl host -s abc123.ngrok-free.app:443
 
 # on any other machine — join
-tshare join -s abc123.ngrok-free.app:443 a3f1c2
+tunl join -s abc123.ngrok-free.app:443 a3f1c2
 ```
 
 TLS is auto-detected when the server address uses port 443 or contains `.ngrok`.
